@@ -7,3 +7,8 @@ import statsmodel.api as sm
 
 df = pd.read_csv('winequaltiy-whiate.csv', sep=';')
 df.head()
+
+datarowSeries = [pd.Series([7.82,.90,0.02,1.9,0.11,25.02,67.02,1.011,3.22,0.70,9.82,5], index=df.columns),
+                 pd.Series([7.82,.90,0.02,1.9,0.11,25.02,67.02,1.011,3.22,0.70,9.82,5], index=df.columns),
+                 pd.Series([7.82,.90,0.02,1.9,0.11,25.02,67.02,1.011,3.22,0.70,9.82,5], index=df.columns),
+                 pd.Series([7.82,.90,0.02,1.9,0.11,25.02,67.02,1.011,3.22,0.70,9.82,5], index=df.columns) ]
