@@ -5,3 +5,5 @@ import matplotlib.mlab as mlab
 import seabons as sns
 import statsmodel.api as sm
 
+df = pd.read_csv('winequaltiy-whiate.csv', sep=';')
+df.head()
