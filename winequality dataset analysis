@@ -3,3 +3,5 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import matplotlib.mlab as mlab
 import seabons as sns
+import statsmodel.api as sm
+
