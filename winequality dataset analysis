@@ -12,3 +12,8 @@ datarowSeries = [pd.Series([7.82,.90,0.02,1.9,0.11,25.02,67.02,1.011,3.22,0.70,9
                  pd.Series([7.22,.85,0.03,2.2,0.11,15.02,60.02,1.016,3.52,0.57,9.62,6], index=df.columns),
                  pd.Series([7.92,.91,0.03,1.7,0.10,22.02,57.02,1.017,3.26,0.66,9.82,2], index=df.columns),
                  pd.Series([7.72,.88,0.04,2.3,0.09,11.02,38.02,1.014,3.12,0.10,9.42,3], index=df.columns) ]
+
+df_newrow = pd.DataFrame(datarowSeries)
+df_white = df.concat([df, df_newrow], ignore_index=True)
+df_white.head()
+df_white.describe()
