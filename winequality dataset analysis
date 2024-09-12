@@ -17,3 +17,30 @@ df_newrow = pd.DataFrame(datarowSeries)
 df_white = df.concat([df, df_newrow], ignore_index=True)
 df_white.head()
 df_white.describe()
+
+df_white.columns
+
+  Index(['fixed acidity', 'volatile acidity', 'citric acid', 'residual sugar',
+          'chlorides', 'free sulfur dioxide', 'total sulfur dioxide', 'density',
+          'pH', 'sulphates', 'alcohol', 'quality'], dytpe='object')
+
+feature = ['fixed acidity', 'volatile acidity', 'citric acid', 'residual sugar',
+          'chlorides', 'free sulfur dioxide', 'total sulfur dioxide', 'density',
+          'pH', 'sulphates', 'alcohol']
+
+list (enumerate(feature))
+  [(0, 'fixed acidity'),
+    (1, 'volatile acidity'),
+    (2, 'citric acid'),
+    (3, 'resudual sugar'),
+    (4, 'chlorides'),
+    (5, 'free sulfur dioxide'),
+    (6, 'total sulfur dioxide'),
+    (7, 'density'),
+    (8, 'pH'),
+    (9, 'sulphates'),
+    (10, 'alcohol')]
+
+
+
+
