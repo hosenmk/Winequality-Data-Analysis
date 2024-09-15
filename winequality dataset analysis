@@ -42,5 +42,46 @@ list (enumerate(feature))
     (10, 'alcohol')]
 
 
+fig, axes = plt.subplots(1, len(feature), figsize=(50, 1.5*len(feature)))
+for i, col in enumerate(feature):
+  ax = sns.boxplot(y=df_white[col], ax=axes.flatten()[i])
+  ax.set_ylim(df_white[col].min(),df_white[col].max())
+  ax.set_ylabel(col + ' / Unit')
+  ax.set_xlabel(col, fontsize=20)
+plt.title("Boxplots showing data distribution of Variables", fontsize=26, fontweight="bold")
+plt.show()
+
+
+#Define data for both variables
+data_1 = df_white['free sulfur dioxide']
+data+2 = df_white['total sulfur dioxide']
+
+#Create two separate figures
+fig1, ax1 = plt.subplots()
+fig2, ax2 = plt.subplots()
+
+#Generate and customize histograms for each variable
+ax1.hist(data_1, bins=10, edgecolor='black', aplha=0.7, label='free sulfur dioxide')
+ax2.hist(data_2, bins=12, edgecolor='red', alpha=0.7, label='total sulfur dioxide')
+
+#Add labels and titile to each figure
+ax1.set_xlabel('Values')
+ax1.set_ylabel('Frequency')
+ax1.set_title('Histogram of free sulfur dioxide')
+ax2.set_xlabel('Values')
+ax2.set_ylabel('Frequency')
+ax2.set_title('Histogram of free sulfur dioxide')
+
+#Add legend to each figure
+ax1.legend()
+ax2.legend()
+
+#Adjust layout and display plots
+plt.tight_layout()
+plt.show()
+
+
+
+
 
 
