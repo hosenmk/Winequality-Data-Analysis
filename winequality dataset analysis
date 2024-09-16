@@ -81,6 +81,26 @@ plt.tight_layout()
 plt.show()
 
 
+#Count the occurences of each category
+counts = df_white['quality'].value_counts()
+
+#create the bar chart
+plt.figure(figsize=(6, 4))
+bars = sns.barplot(x=counts.index, y=counts.values, alpha=0.8, color='blue')
+
+#Show the plot
+plt.tight_layout()
+plt.title("Bar Diagram of Quality of Wine")
+plt.ylabel("Frequency")
+plt.xlabel("Quality Index")
+plt.show()
+
+
+
+
+
+
+
 
 
 
