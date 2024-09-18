@@ -95,6 +95,50 @@ plt.ylabel("Frequency")
 plt.xlabel("Quality Index")
 plt.show()
 
+#Extract all columns except the last one
+features = df_white.columns[:-1]
+
+#Calculate the correlation matrix
+correlation_matrix = df_white[features].corr()
+
+#Create the heatmap
+sns.heatmap(correlation_matrix, cmap="coolwarm")
+plt.title("Heatmap of Correlations")
+plt.show()
+
+numerical_col = df_white.select_dytpes(include=np.number)
+
+spearman_matrix = numerical_col.corr(method="spearman")
+spearman_matrix
+
+df_white_pairplot = df_white
+
+def filter(x):
+  if x <+ 5:
+    return 'bad'
+  else:
+    return  'good'
+
+df_white_pairplot['quality']=df_white_pairplot['quality'].apply(filter)
+
+sns.pairplot(data=df_white_pairplot, hue="quality")
+plt.show()
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
