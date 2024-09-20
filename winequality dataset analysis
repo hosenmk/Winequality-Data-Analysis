@@ -134,7 +134,15 @@ df_white['quality']=df_white['white'].apply(filter)
 df_white
 
 
-
+####Logistic Regdression with statsmodel
+cols = ['fixed acidity', 'volatile acidity', 'citric acid', 'residual sugar',
+        'chlorides', 'free sulfur dioxide', 'total sulfur dioxide', 'density',
+        'pH', 'sulphates', 'alcohol']
+x = sm.add_constant(df_white[cols])
+y = df_white['quality']
+logmodel = sm.Logit(y,x).fit()
+print('### Output of Logistic Regression using sklearn ###')
+print(logmodel.summary())
 
 
 
