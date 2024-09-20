@@ -145,12 +145,32 @@ print('### Output of Logistic Regression using sklearn ###')
 print(logmodel.summary())
 
 
+###Split dataset into training set (70%) and test set (30%)
+from sklearn.model_selection import train_test_split
+X_train, X_test, y_train, y_test = train_test_split(x, y, test_size=0.30, random_state=2)
 
+###Logistic Regression
+from sklearn.linear_model import LogisticsRegression
+from sklearn.metrics import recall_score
+logmodel1 = LogisticRegerssion()
+logmodel1.fit(X_train, y_train)
+y_pred=logmodel1.predict(X_test)
 
+from sklearn.metrics import classification_report, confusion_matrix, accuracy_score, precision_score, roc_auc_score, roc_curve
+print('###Logistic Regression###')
+print("Classification Report", classification_report(y_test, y_pred))
+cm=confusion_matrix(y_test, y_pred)
+print("Confusion matrix")
+print(cm)
 
+print("Precision positive : ", precision_score(y_test, y_pred, pos_label=1))
+print("Precision negative", precision_score(y_test, y_pred, pos_label=0))
+print("Accuracy Score", accuracy_score(y_test, y_pred))
+print("Sensitivity Score", f"Sensitivity (Recall): {recall_score(y_test, y_pred, pos_label=1)}")
+Specificity_score = cm[0,0]/(cm[0,0]+cm[0,1])
+print("Specificity Score", Specificity_score)
 
-
-
+#Calculate ROC AUC score
 
 
 
