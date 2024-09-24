@@ -171,9 +171,55 @@ Specificity_score = cm[0,0]/(cm[0,0]+cm[0,1])
 print("Specificity Score", Specificity_score)
 
 #Calculate ROC AUC score
+roc_auc = roc_auc_score(y_test, logmodel1.predict_proba(X_test)[:, 1])
+print("ROC AUC Score LM:", roc_auc)
 
+#Optionally plot ROC curve for further analysis
+fpr, tpr, thresholds = roc_curve(y_test, logmodel1.predict_proba(X_test)[:, 1])
+plt.plot(fpr, tpr)
+plt.plot([0, 1], [0, 1], color='navy', linestyle='--')
+plt.xlabel("False Positive Rate")
+plt.ylabel("True Positive Rate")
+plt.title("ROC Curve")
+plt.show()
 
+##################### DT #################################################
+from sklearn import tree
+DTclf=tree.DecisionTreeClassifier()
+####
+DTclf.fit(X_train, y_train)
+y_pred= DTclf.predict(X_test) ##y_test= Y, y_pred=Y^
 
+####print('############# DT ###############')
+print("Classification Report", classification_report(y_test, y_pred))
+cmDT=confusion_matrix(y_test, y_pred)
+print("Confusion matrix")
+print(cmDT)
+print("Precision positive : ", precision_score(y_test, y_pred, pos_label=1))
+print("Precision negative", precision_score(y_test, y_pred, pos_label=0))
+print("Accuracy Score", accuracy_score(y_test, y_pred))
+print("Sensitivity Score", f"Sensitivity (Recall): {recall_score(y_test, y_pred, pos_label=1)}")
+Specificity_score = cmDT[0,0]/(cmDT[0,0]+cm[0,1])
+print("Specificity Score", Specificity_score)
+
+#Calculate ROC AUC score
+roc_auc_DT = roc_auc_score(y_test, DTclf.predict_proba(X_test)[:, 1])
+print("ROC AUC Score DT:", roc_auc_DT)
+
+#Optionally plot ROC curve for further analysis
+fpr, tpr, thresholds = roc_curve(y_test, DTclf.predict_proba(X_test)[:, 1])
+plt.plot(fpr, tpr)
+plt.plot([0, 1], [0, 1], color='navy', linestyle='--')
+plt.xlabel("False Positive Rate")
+plt.ylabel("True Positive Rate")
+plt.title("ROC Curve")
+plt.show()
+
+########################## RF ############################################
+from sklearn.ensemble import RandomForestClassifier
+RFclf=RandomForestClassifier(n_estimators=11)
+RFclf.fit(X_train, y_train)
+y_pred=RFclf.predict(X_test)
 
 
 
