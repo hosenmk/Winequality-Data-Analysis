@@ -247,7 +247,12 @@ plt.title("ROC Curve")
 plt.show()
 
 
-
+################################# SVM ######################################
+from sklearn.svm import SVC
+SVclf = SVC(kernel='linear', probability=True)
+#### can use other kernel depending your data features, e.g., (kernel='poly', degree=4), kernel='linear', Gaussian kernel: kernel = 'rbf', kernel='sigmoid'
+SVclf.fit(X_train, y_train)
+y_pred=SVclf.predict(X_test)
 
 
 
