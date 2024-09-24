@@ -233,6 +233,18 @@ print("Sensitivity Score", f"Sensitivity (Recall): {recall_score(y_test, y_pred,
 Specificity_score = cmRF[0,0]/(cmRF[0,0]+cm[0,1])
 print("Specificity Score", Specificity_score)
 
+#Calculate ROC AUC score
+roc_auc_RF = roc_auc_score(y_test, RFclf.predict_proba(X_test)[:, 1])
+print("ROC AUC Score RF:", roc_auc_RF)
+
+#Optionally plot ROC curve for further analysis
+fpr, tpr, thresholds = roc_curve(y_test, RFclf.predict_proba(X_test)[:, 1])
+plt.plot(fpr, tpr)
+plt.plot([0, 1], [0, 1], color='navy', linestyle='--')
+plt.xlabel("False Positive Rate")
+plt.ylabel("True Positive Rate")
+plt.title("ROC Curve")
+plt.show()
 
 
 
