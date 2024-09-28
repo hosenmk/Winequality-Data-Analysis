@@ -254,5 +254,40 @@ SVclf = SVC(kernel='linear', probability=True)
 SVclf.fit(X_train, y_train)
 y_pred=SVclf.predict(X_test)
 
+print('############# SVM linear ###############')
+print("Classification Report", classification_report(y_test, y_pred))
+cmSVM=confusion_matrix(y_test, y_pred)
+print("Confusion matrix")
+print(cmSVM)
+print("Precision positive : ", precision_score(y_test, y_pred, pos_label=1))
+print("Precision negative", precision_score(y_test, y_pred, pos_label=0))
+print("Accuracy Score", accuracy_score(y_test, y_pred))
+print("Sensitivity Score", f"Sensitivity (Recall): {recall_score(y_test, y_pred, pos_label=1)}")
+Specificity_score = cmSVM[0,0]/(cmSVM[0,0]+cm[0,1])
+print("Specificity Score", Specificity_score)
+
+# Calculate ROC AUC score
+roc_auc_SVM = roc_auc_score(y_test, SVclf.predict_proba(X_test)[:, 1])
+print("ROC AUC Score SVM:", roc_auc_SVM)
+
+# Optionally plot ROC curve for further analysis
+fpr, tpr, thresholds = roc_curve(y_test, SVclf.predict_proba(X_test)[:, 1])
+plt.plot(fpr, tpr)
+plt.plot([0, 1], [0, 1], color='navy', linestyle='--')
+plt.xlabel("False Positive Rate")
+plt.ylabel("True Positive Rate")
+plt.title("ROC Curve")
+plt.show()
+
+
+
+
+
+
+
+
+
+
+
 
 
