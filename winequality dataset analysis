@@ -281,7 +281,8 @@ plt.show()
 
 
 
-
+# Comparing the above four models we can evaluate that the RANDOM FOREST MODEL performed best to predict the probability of good wine
+ quality in WINE QUALITY DATA with the value of area under curve 0.8687.
 
 
 
